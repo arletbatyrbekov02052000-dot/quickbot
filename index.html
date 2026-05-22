@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#2563EB;--blue-dark:#1D4ED8;--green:#10B981;--dark:#0F172A;--gray:#64748B;--light:#F8FAFC;--border:#E2E8F0;}
+body{font-family:'Inter',sans-serif;background:#fff;color:var(--dark);}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;border-bottom:1px solid var(--border);position:sticky;top:0;background:#fff;z-index:100;}
+.nav-logo{font-size:22px;font-weight:800;color:var(--blue);}
+.nav-logo span{color:var(--dark);}
+.nav-btn{background:var(--blue);color:#fff;padding:10px 24px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;}
+.hero{text-align:center;padding:80px 20px 60px;background:linear-gradient(135deg,#EFF6FF 0%,#F0FDF4 100%);}
+.hero-badge{display:inline-block;background:#DBEAFE;color:var(--blue);padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:20px;}
+.hero h1{font-size:48px;font-weight:800;line-height:1.15;margin-bottom:16px;max-width:700px;margin-left:auto;margin-right:auto;}
+.hero h1 span{color:var(--blue);}
+.hero p{font-size:18px;color:var(--gray);max-width:500px;margin:0 auto 32px;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--blue);color:#fff;padding:14px 32px;border-radius:10px;border:none;font-size:16px;font-weight:600;cursor:pointer;}
+.btn-secondary{background:#fff;color:var(--blue);padding:14px 32px;border-radius:10px;border:2px solid var(--blue);font-size:16px;font-weight:600;cursor:pointer;}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:48px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-size:32px;font-weight:800;color:var(--blue);}
+.stat-label{font-size:14px;color:var(--gray);}
+.section{padding:80px 40px;max-width:1100px;margin:0 auto;}
+.section-badge{display:inline-block;background:#DBEAFE;color:var(--blue);padding:4px 14px;border-radius:100px;font-size:12px;font-weight:600;margin-bottom:12px;}
+.section-title{font-size:36px;font-weight:800;margin-bottom:8px;}
+.section-sub{font-size:16px;color:var(--gray);margin-bottom:48px;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+.step{background:var(--light);border-radius:16px;padding:28px;}
+.step-num{width:40px;height:40px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;margin-bottom:16px;}
+.step h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+.step p{font-size:14px;color:var(--gray);line-height:1.6;}
+.features-bg{background:var(--light);padding:80px 40px;}
+.features{max-width:1100px;margin:0 auto;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.feature{background:#fff;border-radius:16px;padding:28px;border:1px solid var(--border);}
+.feature-icon{font-size:32px;margin-bottom:16px;}
+.feature h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+.feature p{font-size:14px;color:var(--gray);line-height:1.6;}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+.price-card{border-radius:16px;padding:32px;border:2px solid var(--border);}
+.price-card.popular{border-color:var(--blue);position:relative;}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:4px 16px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;}
+.price-name{font-size:16px;font-weight:600;color:var(--gray);margin-bottom:8px;}
+.price-amount{font-size:40px;font-weight:800;margin-bottom:4px;}
+.price-amount span{font-size:16px;font-weight:400;color:var(--gray);}
+.price-desc{font-size:14px;color:var(--gray);margin-bottom:24px;}
+.price-features{list-style:none;margin-bottom:28px;}
+.price-features li{font-size:14px;padding:6px 0;display:flex;align-items:center;gap:8px;}
+.price-features li::before{content:"✓";color:var(--green);font-weight:700;}
+.price-btn{width:100%;padding:12px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;border:none;}
+.price-btn.outline{background:#fff;color:var(--blue);border:2px solid var(--blue);}
+.price-btn.filled{background:var(--blue);color:#fff;}
+.cta{background:linear-gradient(135deg,var(--blue) 0%,#7C3AED 100%);padding:80px 40px;text-align:center;}
+.cta h2{font-size:40px;font-weight:800;color:#fff;margin-bottom:16px;}
+.cta p{font-size:18px;color:rgba(255,255,255,0.8);margin-bottom:32px;}
+.cta-btn{background:#fff;color:var(--blue);padding:16px 40px;border-radius:10px;border:none;font-size:16px;font-weight:700;cursor:pointer;}
+footer{background:var(--dark);padding:40px;text-align:center;color:rgba(255,255,255,0.5);font-size:14px;}
+footer strong{color:#fff;}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;}
+.modal.open{display:flex;}
+.modal-box{background:#fff;border-radius:20px;padding:40px;max-width:480px;width:90%;}
+.modal-title{font-size:24px;font-weight:800;margin-bottom:8px;}
+.modal-sub{font-size:14px;color:var(--gray);margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-label{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;display:block;}
+.form-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;outline:none;font-family:'Inter',sans-serif;}
+.form-input:focus{border-color:var(--blue);}
+.form-submit{width:100%;background:var(--blue);color:#fff;padding:14px;border-radius:8px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin-top:8px;}
+.modal-close{float:right;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gray);}
+.success-msg{display:none;text-align:center;padding:20px;}
+.success-msg h3{font-size:22px;font-weight:800;margin-bottom:8px;color:var(--green);}
+.success-msg p{font-size:14px;color:var(--gray);}
+.loading{display:none;text-align:center;padding:20px;color:var(--gray);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Quick<span>Bot</span></div>
+  <button class="nav-btn" onclick="openModal()">Начать бесплатно</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🤖 ИИ агент для вашего бизнеса</div>
+  <h1>Создайте <span>ИИ агента</span> для бизнеса за 5 минут</h1>
+  <p>Без программистов. Без технических знаний. Работает 24/7 в Telegram.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="openModal()">Попробовать бесплатно</button>
+    <button class="btn-secondary">Смотреть демо</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">5 мин</div><div class="stat-label">Время настройки</div></div>
+    <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Работает всегда</div></div>
+    <div class="stat"><div class="stat-num">0 ₸</div><div class="stat-label">Для старта</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-badge">КАК ЭТО РАБОТАЕТ</div>
+  <div class="section-title">Три простых шага</div>
+  <div class="section-sub">Никакого кода. Никаких технических знаний.</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Заполните анкету</h3><p>Введите название бизнеса, услуги и цены. Занимает 3 минуты.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Получите бота</h3><p>QuickBot автоматически создаёт ИИ агента специально для вашего бизнеса.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Подключите Telegram</h3><p>Бот начинает отвечать клиентам и сохранять заявки автоматически.</p></div>
+  </div>
+</div>
+
+<div class="features-bg">
+  <div class="features">
+    <div class="section-badge">ВОЗМОЖНОСТИ</div>
+    <div class="section-title">Всё что нужно бизнесу</div>
+    <div class="section-sub">QuickBot делает всё автоматически пока вы занимаетесь бизнесом</div>
+    <div class="features-grid">
+      <div class="feature"><div class="feature-icon">🤖</div><h3>ИИ на русском языке</h3><p>Бот понимает клиентов и отвечает на русском и казахском языках.</p></div>
+      <div class="feature"><div class="feature-icon">📋</div><h3>Заявки в таблицу</h3><p>Все контакты клиентов автоматически сохраняются в Google Sheets.</p></div>
+      <div class="feature"><div class="feature-icon">🔔</div><h3>Уведомления</h3><p>Когда клиент оставляет заявку — вам сразу приходит уведомление в Telegram.</p></div>
+      <div class="feature"><div class="feature-icon">⚡</div><h3>Готов за 5 минут</h3><p>Без программистов и технических знаний. Просто заполните форму.</p></div>
+      <div class="feature"><div class="feature-icon">🕐</div><h3>Работает 24/7</h3><p>Бот отвечает клиентам даже ночью и в выходные дни.</p></div>
+      <div class="feature"><div class="feature-icon">💰</div><h3>Доступная цена</h3><p>Начните бесплатно. Платите только когда увидите результат.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-badge">ТАРИФЫ</div>
+  <div class="section-title">Простые цены</div>
+  <div class="section-sub">Начните бесплатно. Без скрытых платежей.</div>
+  <div class="pricing">
+    <div class="price-card">
+      <div class="price-name">Старт</div>
+      <div class="price-amount">0 <span>₸/мес</span></div>
+      <div class="price-desc">Для знакомства с продуктом</div>
+      <ul class="price-features"><li>1 ИИ агент</li><li>До 100 сообщений/мес</li><li>Google Sheets интеграция</li><li>Поддержка по email</li></ul>
+      <button class="price-btn outline" onclick="openModal()">Начать бесплатно</button>
+    </div>
+    <div class="price-card popular">
+      <div class="popular-badge">⭐ Популярный</div>
+      <div class="price-name">Бизнес</div>
+      <div class="price-amount">9 900 <span>₸/мес</span></div>
+      <div class="price-desc">Для активного бизнеса</div>
+      <ul class="price-features"><li>1 ИИ агент</li><li>Безлимит сообщений</li><li>Google Sheets + уведомления</li><li>Приоритетная поддержка</li><li>Настройка под ваш бренд</li></ul>
+      <button class="price-btn filled" onclick="openModal()">Выбрать план</button>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Про</div>
+      <div class="price-amount">24 900 <span>₸/мес</span></div>
+      <div class="price-desc">Для крупного бизнеса</div>
+      <ul class="price-features"><li>До 5 ИИ агентов</li><li>Безлимит сообщений</li><li>Полная аналитика</li><li>Личный менеджер</li><li>API доступ</li></ul>
+      <button class="price-btn outline" onclick="openModal()">Выбрать план</button>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>Готовы автоматизировать бизнес?</h2>
+  <p>Создайте первого ИИ агента прямо сейчас — бесплатно!</p>
+  <button class="cta-btn" onclick="openModal()">Начать бесплатно →</button>
+</div>
+
+<footer>
+  <strong>QuickBot</strong> — ИИ агенты для малого бизнеса Казахстана<br><br>
+  © 2026 QuickBot. Все права защищены.
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div id="form-content">
+      <div class="modal-title">Начать бесплатно</div>
+      <div class="modal-sub">Создайте первого ИИ агента за 5 минут</div>
+      <div class="form-group">
+        <label class="form-label">Ваше имя</label>
+        <input class="form-input" id="f-name" type="text" placeholder="Например: Айгуль">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Номер телефона</label>
+        <input class="form-input" id="f-phone" type="tel" placeholder="+7 777 123 45 67">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Название бизнеса</label>
+        <input class="form-input" id="f-business" type="text" placeholder="Например: Салон красоты Айгуль">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Услуги и цены</label>
+        <input class="form-input" id="f-services" type="text" placeholder="Например: Стрижка 3000тг, Окраска 8000тг">
+      </div>
+      <div class="loading" id="loading">⏳ Создаём вашего ИИ агента...</div>
+      <button class="form-submit" id="submit-btn" onclick="submitForm()">Создать ИИ агента →</button>
+    </div>
+    <div class="success-msg" id="success-msg">
+      <div style="font-size:48px;margin-bottom:16px;">🎉</div>
+      <h3>Заявка принята!</h3>
+      <p>Мы получили данные вашего бизнеса. В течение нескольких минут вы получите ссылку на вашего ИИ агента в Telegram!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const WEBHOOK_URL = 'https://hook.us2.make.com/drlvgvs5o7f6cpco73g4j593pmj6fnqj';
+
+function openModal(){document.getElementById('modal').classList.add('open');}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('form-content').style.display='block';
+  document.getElementById('success-msg').style.display='none';
+}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+async function submitForm(){
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const business = document.getElementById('f-business').value.trim();
+  const services = document.getElementById('f-services').value.trim();
+
+  if(!name || !phone || !business || !services){
+    alert('Пожалуйста, заполните все поля');
+    return;
+  }
+
+  document.getElementById('submit-btn').style.display='none';
+  document.getElementById('loading').style.display='block';
+
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name, phone, business, services})
+    });
+  } catch(e) {}
+
+  document.getElementById('loading').style.display='none';
+  document.getElementById('form-content').style.display='none';
+  document.getElementById('success-msg').style.display='block';
+}
+</script>
+</body>
+</html>
